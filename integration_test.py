@@ -15,12 +15,12 @@ def main():
     clean()
 
 def create_working_dir():
-    os.system("mkdir '{}'".format(test_dir))
+    run("mkdir '{}'".format(test_dir))
     for f in input:
-        os.system("touch '{}/{}'".format(test_dir, f))
+        run("touch '{}/{}'".format(test_dir, f))
 
 def run_program():
-    os.system("./pictures_rename.py '{}'".format(test_dir))
+    run("./pictures_rename.py '{}'".format(test_dir))
 
 def check_dir():
     assert_similars(expected, os.listdir(test_dir))
@@ -30,6 +30,9 @@ def clean():
 
 def rmdir(d):
     if os.path.isdir(d):
-        os.system("rm -r '{}'".format(d))
+        run("rm -r '{}'".format(d))
+
+def run(cmd):
+    os.system(cmd)
 
 main()
