@@ -9,7 +9,10 @@ def main():
 
     renamer = Renamer([WAformat(), SignalFormat()])
     for f in os.listdir(working_directory):
-        if f != renamer.rename(f):
-            os.system("mv {}/{} {}/{}".format(working_directory, f, working_directory, renamer.rename(f)))
+        mv(working_directory, f, renamer.rename(f))
+
+def mv(dir, a, b):
+    if a != b:
+        os.system("mv {}/{} {}/{}".format(dir, a, dir, b))
 
 main()
