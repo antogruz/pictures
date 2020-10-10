@@ -5,7 +5,7 @@ from unittests import assert_similars
 
 input = ["20200929_131032.jpg", "IMG-20200929-WA0001.jpg", "signal-2020-09-12-115134.jpg", "VID-20200829-WA0006.mp4"]
 expected = ["20200929_131032.jpg", "20200929_WA0001.jpg", "20200912_115134.jpg", "20200829_WA0006.mp4"]
-test_dir = "test-tmp"
+test_dir = "test-tmp with spaces"
 
 def main():
     clean()
@@ -15,12 +15,12 @@ def main():
     clean()
 
 def create_working_dir():
-    os.system("mkdir " + test_dir)
+    os.system("mkdir '{}'".format(test_dir))
     for f in input:
-        os.system("touch {}/{}".format(test_dir, f))
+        os.system("touch '{}/{}'".format(test_dir, f))
 
 def run_program():
-    os.system("./pictures_rename.py {}".format(test_dir))
+    os.system("./pictures_rename.py '{}'".format(test_dir))
 
 def check_dir():
     assert_similars(expected, os.listdir(test_dir))
@@ -30,6 +30,6 @@ def clean():
 
 def rmdir(d):
     if os.path.isdir(d):
-        os.system("rm -r {}".format(d))
+        os.system("rm -r '{}'".format(d))
 
 main()

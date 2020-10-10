@@ -13,6 +13,6 @@ def main():
 
 def mv(dir, a, b):
     if a != b:
-        os.system("mv {}/{} {}/{}".format(dir, a, dir, b))
+        os.system("mv '{}/{}' '{}/{}'".format(dir, a, dir, b))
 
 main()
