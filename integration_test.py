@@ -26,6 +26,10 @@ def check_dir():
     assert_similars(expected, os.listdir(test_dir))
 
 def clean():
-    os.system("rm -r {} || true".format(test_dir))
+    rmdir(test_dir)
+
+def rmdir(d):
+    if os.path.isdir(d):
+        os.system("rm -r {}".format(d))
 
 main()
