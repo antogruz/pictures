@@ -3,8 +3,8 @@
 import os
 from unittests import assert_similars
 
-input = ["20200929_131032.jpg", "IMG-20200929-WA0001.jpg", "signal-2020-09-12-115134.jpg"]
-expected = ["20200929_131032.jpg", "20200929_WA0001.jpg", "20200912_115134.jpg"]
+input = ["20200929_131032.jpg", "IMG-20200929-WA0001.jpg", "signal-2020-09-12-115134.jpg", "VID-20200829-WA0006.mp4"]
+expected = ["20200929_131032.jpg", "20200929_WA0001.jpg", "20200912_115134.jpg", "20200829_WA0006.mp4"]
 test_dir = "test-tmp"
 
 def main():

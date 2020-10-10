@@ -13,11 +13,18 @@ class Renamer():
         return s
 
 class WAformat():
+    def __init__(self):
+        self.keywords = ["IMG", "VID"]
+
     def belongs(self, s):
-        return "IMG" in s
+        for k in self.keywords:
+            if k in s:
+                return True
+        return False
 
     def rename(self, s):
-        s = re.sub("IMG-", "", s)
+        for k in self.keywords:
+            s = re.sub("{}-".format(k), "", s)
         return dashToUnderscore(s)
 
 class SignalFormat():
