@@ -22,7 +22,7 @@ def create_working_dir():
         open(test_dir + "/" + f, "w")
 
 def run_program():
-    subprocess.run(["./pictures_rename.py", test_dir])
+    subprocess.run(["python", "pictures_rename.py", test_dir])
 
 def check_dir():
     assert_similars(expected, os.listdir(test_dir))
