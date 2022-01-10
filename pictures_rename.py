@@ -13,6 +13,10 @@ def main():
 
 def mv(dir, a, b):
     if a != b:
-        os.system("mv '{}/{}' '{}/{}'".format(dir, a, dir, b))
+        os.rename(path(dir, a), path(dir, b))
+
+def path(dir, name):
+    return dir + "/" + name
+
 
 main()

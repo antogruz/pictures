@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import os
+import shutil
+import subprocess
 from unittests import assert_similars
 
 input = ["20200929_131032.jpg", "IMG-20200929-WA0001.jpg", "signal-2020-09-12-115134.jpg", "VID-20200829-WA0006.mp4"]
@@ -15,12 +17,12 @@ def main():
     clean()
 
 def create_working_dir():
-    run("mkdir '{}'".format(test_dir))
+    os.mkdir(test_dir)
     for f in input:
-        run("touch '{}/{}'".format(test_dir, f))
+        open(test_dir + "/" + f, "w")
 
 def run_program():
-    run("./pictures_rename.py '{}'".format(test_dir))
+    subprocess.run(["./pictures_rename.py", test_dir])
 
 def check_dir():
     assert_similars(expected, os.listdir(test_dir))
@@ -30,7 +32,7 @@ def clean():
 
 def rmdir(d):
     if os.path.isdir(d):
-        run("rm -r '{}'".format(d))
+        shutil.rmtree(d, ignore_errors=True)
 
 def run(cmd):
     os.system(cmd)
